@@ -1,0 +1,30 @@
+{
+    "parser": "babel-eslint",
+    "plugins": [
+        "babel",
+    ],
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [ "error", 4 ],
+        "operator-linebreak": [ 1, "before" ],
+        "brace-style": [ "error", "stroustrup", { "allowSingleLine": false } ],
+        "generator-star-spacing": "error",
+        "object-curly-spacing": [ "error", "always" ],
+        "array-bracket-spacing": [ "error", "always" ],
+        "object-shorthand": "error",
+        "semi": "error",
+        "no-console": [ "error", { allow: ["warn", "error"] } ]  // Just prevent console.log
+    }
+}
