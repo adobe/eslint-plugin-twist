@@ -1,5 +1,5 @@
 {
-  "name": "@twist/eslint-plugin",
+  "name": "@twist/eslint-plugin-core",
   "version": "0.1.0",
   "author": "Adobe Systems Inc.",
   "license": "Apache-2.0",
