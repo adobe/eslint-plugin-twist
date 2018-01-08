@@ -2,8 +2,9 @@
   "name": "@twist/eslint-plugin-core",
   "version": "0.1.0",
   "author": "Adobe Systems Inc.",
-  "license": "Apache-2.0",
   "description": "Custom eslint rules to support syntactic features of Twist",
+  "repository": "https://github.com/adobe/eslint-plugin-twist",
+  "license": "Apache-2.0",
   "keywords": [
     "twist",
     "eslint",
