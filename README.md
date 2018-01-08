@@ -38,8 +38,8 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-* [twist/jsx-member-vars](docs/rules/jsx-member-vars.md): Prevent Import members and variables used in JSX to be marked as 'no-unused'
-* [twist/jsx-no-undef](docs/rules/jsx-no-undef.md): Extends eslint 'no-undef' rule for Twist structural components like `<repeat>` and `using`.
+* [twist/jsx-member-vars](docs/rules/jsx-member-vars.md): Prevent imported members and variables used in JSX from being marked as unused.
+* [twist/no-undef](docs/rules/no-undef.md): Extends eslint 'no-undef' rule for Twist structural components like `<repeat>` and `using`.
 
 ## Proposing a new Rule
 
@@ -67,10 +67,9 @@ Here's an example of using the Twist ESLint plugin in conjunction with the `esli
     "parser": "babel-eslint",
     "plugins": [
         "babel",
-        "@twist/twist"
+        "@twist/core"
     ],
     "env": {
-        "@twist/twist/twist": true,
         "browser": true,
         "es6": true,
         "node": true
@@ -84,9 +83,9 @@ Here's an example of using the Twist ESLint plugin in conjunction with the `esli
         "sourceType": "module"
     },
     "rules": {
-        "@twist/twist/jsx-member-vars": "warn",
-        "@twist/twist/jsx-no-undef": "error",
-        "no-undef": "off" // letting jsx-no-undef to take over
+        "@twist/core/jsx-member-vars": "warn",
+        "@twist/core/no-undef": "error",
+        "no-undef": "off" // letting twist's no-undef take over
     }
 }
 

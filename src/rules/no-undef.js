@@ -27,6 +27,8 @@
 // Helpers
 //----------------------------------------------------------------------
 
+const getTwistConfiguration = require('../twist-config');
+
 const hasTypeOfOperator = node => {
     var parent = node.parent;
 
@@ -39,6 +41,15 @@ const isJSXTag = (node, tag) => {
     }
     if (node.name && node.name.type === "JSXNamespacedName" && (!tag || (node.name.namespace.name + ':' + node.name.name.name) === tag)) {
         return true;
+    }
+    return false;
+};
+
+const isDecorator = node => {
+    for (let n = node; n; n = n.parent) {
+        if (n.type === 'Decorator') {
+            return true;
+        }
     }
     return false;
 };
@@ -67,6 +78,8 @@ const isNameInForAttribute = (forObject, name) => {
     }
     return false;
 };
+
+
 
 
 //------------------------------------------------------------------------------
@@ -146,6 +159,7 @@ module.exports = {
             },
             "Program:exit"() {
                 const globalScope = context.getScope();
+                const twistConfig = getTwistConfiguration();
 
                 globalScope.through.forEach(({ identifier }) => {
                     let node = identifier;
@@ -155,6 +169,11 @@ module.exports = {
                     }
 
                     let identifierName = identifier.name;
+
+                    // First check for decorators - they're ok if defined
+                    if (twistConfig.decorators[identifierName] && isDecorator(identifier)) {
+                        return;
+                    }
 
                     while (node.parent) {
                         node = node.parent;
@@ -185,7 +204,7 @@ module.exports = {
                                     return;
                                 }
                             }
-                            // adds support for <div define-ref={ element}></div>, and <MyComponent as={ params } />
+                            // adds support for <MyComponent as={ params } />
                             else if (isJSXTag(node.openingElement)) {
                                 if (isNameInAsAttribute(attrMap.as, identifierName)) {
                                     return;

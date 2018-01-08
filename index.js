@@ -13,7 +13,7 @@
 
 /**
  * @fileoverview Custom rules to support syntactic features of Twist
- * @author Manuel Castellanos Raboso
+ * @author Adobe
  */
 "use strict";
 
@@ -30,38 +30,12 @@ const requireIndex = require("requireindex");
 "use strict";
 
 module.exports = {
-    environments: {
-        "twist": {
-            globals: {
-                "Component": true,
-                "Prototype": true,
-                "Attribute": true,
-                "Observable": true,
-                "Task": true,
-                "Abstract": true,
-                "Bind": true,
-                "Debounce": true,
-                "Delay": true,
-                "Memoize": true,
-                "Throttle": true,
-                "Cache": true,
-                "Store": true,
-                "State": true,
-                "Json": true,
-                "Route": true,
-                "Action": true,
-            }
-        }
-    },
     rules: requireIndex(__dirname + "/src/rules"),
     configs: {
         recommended: {
-            env: {
-                "twist": true
-            },
             rules: {
-                "twist/jsx-member-vars": 2,
-                "twist/jsx-no-undef": 2
+                "@twist/core/jsx-member-vars": 2,
+                "@twist/core/jsx-no-undef": 2
             }
         }
     }

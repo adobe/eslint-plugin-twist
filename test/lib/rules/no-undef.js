@@ -38,10 +38,10 @@ require('babel-eslint');
 // Tests
 //------------------------------------------------------------------------------
 
-const jsxNoUndef = require('../../../src/rules/jsx-no-undef');
-let ruleTester = new RuleTester({ parserOptions });
+const jsxNoUndef = require('../../../src/rules/no-undef');
+let ruleTester = new RuleTester({ parserOptions, parser: 'babel-eslint' });
 
-ruleTester.run('jsx-no-undef', jsxNoUndef, {
+ruleTester.run('no-undef', jsxNoUndef, {
     valid: [ {
         code: `
         var fruits = [ "apple", "orange", "watermelon" ];
@@ -120,6 +120,13 @@ ruleTester.run('jsx-no-undef', jsxNoUndef, {
             </MyComponent>
         </ul>;
         `
+    }, {
+        code: `
+        @Store
+        export default class MyStore {
+            @State.byVal x;
+        }
+        `
     } ],
     invalid: [ {
         code: `
@@ -194,6 +201,17 @@ ruleTester.run('jsx-no-undef', jsxNoUndef, {
         errors: [
             { message: '"f()" is not an identifier. The "as" attribute can only be used with an identifier.', type: "JSXAttribute" }
         ]
+    }, {
+        code: `
+        @Comp
+        export default class C {}
+        `,
+        errors: [ { message: "'Comp' is not defined.", type: "Identifier" } ]
+    }, {
+        code: `
+        let x = new Store();
+        `,
+        errors: [ { message: "'Store' is not defined.", type: "Identifier" } ]
     } ]
 });
 
