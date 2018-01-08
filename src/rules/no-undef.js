@@ -32,7 +32,7 @@ const getTwistConfiguration = require('../twist-config');
 const hasTypeOfOperator = node => {
     var parent = node.parent;
 
-    return parent.type && parent.type === "UnaryExpression" && parent.operator === "typeof";
+    return parent && parent.type === "UnaryExpression" && parent.operator === "typeof";
 };
 
 const isJSXTag = (node, tag) => {
