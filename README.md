@@ -20,7 +20,7 @@ Add `twist` to the plugins section of your `.eslintrc` configuration file. You c
 ```json
 {
     "plugins": [
-        "@twist/twist"
+        "@twist/core"
     ]
 }
 ```
@@ -31,7 +31,7 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "@twist/twist/rule-name": "error"
+        "@twist/core/rule-name": "error"
     }
 }
 ```
@@ -74,7 +74,10 @@ Here's an example of using the Twist ESLint plugin in conjunction with the `esli
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "@twist/core:recommended"
+    ]
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -83,6 +86,7 @@ Here's an example of using the Twist ESLint plugin in conjunction with the `esli
         "sourceType": "module"
     },
     "rules": {
+        // You can override rules here if you want - this is what the @twist/core:recommended does:
         "@twist/core/jsx-member-vars": "warn",
         "@twist/core/no-undef": "error",
         "no-undef": "off" // letting twist's no-undef take over

@@ -13,7 +13,7 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "src/rules/"
+    "src/"
   ],
   "scripts": {
     "test": "nyc mocha test --reporter spec --recursive --growl",

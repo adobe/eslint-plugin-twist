@@ -34,8 +34,9 @@ module.exports = {
     configs: {
         recommended: {
             rules: {
-                "@twist/core/jsx-member-vars": 2,
-                "@twist/core/jsx-no-undef": 2
+                "@twist/core/jsx-member-vars": "warn",
+                "@twist/core/no-undef": "error",
+                "no-undef": "off"
             }
         }
     }
