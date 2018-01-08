@@ -160,6 +160,7 @@ module.exports = {
             "Program:exit"() {
                 const globalScope = context.getScope();
                 const twistConfig = getTwistConfiguration();
+                const twistDecorators = twistConfig.decorators || {};
 
                 globalScope.through.forEach(({ identifier }) => {
                     let node = identifier;
@@ -171,7 +172,7 @@ module.exports = {
                     let identifierName = identifier.name;
 
                     // First check for decorators - they're ok if defined
-                    if (twistConfig.decorators[identifierName] && isDecorator(identifier)) {
+                    if (twistDecorators[identifierName] && isDecorator(identifier)) {
                         return;
                     }
 

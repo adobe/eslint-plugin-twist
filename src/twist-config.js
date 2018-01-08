@@ -23,7 +23,7 @@ module.exports = () => {
             config = new TwistConfiguration();
         }
         catch (e) {
-            config = null;
+            config = {};
         }
     }
     return config;
