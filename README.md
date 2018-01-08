@@ -76,7 +76,7 @@ Here's an example of using the Twist ESLint plugin in conjunction with the `esli
     },
     "extends": [
         "eslint:recommended",
-        "@twist/core:recommended"
+        "plugin:@twist/core/recommended"
     ]
     "parserOptions": {
         "ecmaFeatures": {
@@ -86,11 +86,11 @@ Here's an example of using the Twist ESLint plugin in conjunction with the `esli
         "sourceType": "module"
     },
     "rules": {
-        // You can override rules here if you want - this is what the @twist/core:recommended does:
+        // You can override rules here if you want
+        // FYI, this is what @twist/core/recommended gives you:
         "@twist/core/jsx-member-vars": "warn",
         "@twist/core/no-undef": "error",
         "no-undef": "off" // letting twist's no-undef take over
     }
 }
-
 ```
