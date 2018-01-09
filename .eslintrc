@@ -1,7 +1,7 @@
 {
     "parser": "babel-eslint",
     "plugins": [
-        "babel",
+        "babel"
     ],
     "env": {
         "browser": true,
