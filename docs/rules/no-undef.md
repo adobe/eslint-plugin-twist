@@ -1,6 +1,6 @@
-# Extends eslint 'no-undef' rule for Twist JSX.
+# Extends eslint 'no-undef' rule for Twist.
 
-This rule is the same as the standard ESlint [`no-undef` rule](http://eslint.org/docs/rules/no-undef), but it additionally recognizes variables defined in Twist's structural JSX components - in particular in `<repeat>` and `<using>`.
+This rule is the same as the standard ESlint [`no-undef` rule](http://eslint.org/docs/rules/no-undef), but it additionally recognizes variables defined in Twist's structural JSX components - in particular in `<repeat>` and `<using>` - as well as auto-imported decorators (as read from the .twistrc file).
 
 ## Rule Details
 
@@ -36,6 +36,13 @@ The following patterns are not considered errors:
 </using>
 ```
 
+```js
+// Assumes a .twistrc file that includes only @twist/core
+@Store
+class MyStore {
+}
+```
+
 The following patterns are considered errors:
 
 ```js
@@ -55,7 +62,14 @@ b = 10;
 </repeat>
 ```
 
+```js
+// Assumes a .twistrc file that includes only @twist/core
+@Stooore
+class MyStore {
+}
+```
+
 
 ## When Not To Use It
 
-If you are not using the structural components of Twist.
+If you are not using the structural components or auto-imported decorators of Twist.
