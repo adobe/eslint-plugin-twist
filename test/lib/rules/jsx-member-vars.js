@@ -90,7 +90,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         /* eslint jsx-member-vars: 1 */
         function foo() {
           var App = { Foo: { Bar: {} } };
-          var bar = Torq.render(<App.Foo.Bar/>);
+          var bar = TestRender(<App.Foo.Bar/>);
           return bar;
         };
         foo()
@@ -100,7 +100,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         /* eslint jsx-member-vars: 1 */
         function foo() {
           var App = { Foo: { Bar: { Baz: {} } } };
-          var bar = Torq.render(<App.Foo.Bar.Baz/>);
+          var bar = TestRender(<App.Foo.Bar.Baz/>);
           return bar;
         };
         foo()
@@ -116,7 +116,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         /* eslint jsx-member-vars: 1 */
         var App;
         var unused;
-        Torq.render(<App unused=""/>);
+        TestRender(<App unused=""/>);
       `,
             errors: [ { message: '\'unused\' is defined but never used.' } ]
         }, {
@@ -124,7 +124,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         /* eslint jsx-member-vars: 1 */
         var App;
         var Hello;
-        Torq.render(<App:Hello/>);
+        TestRender(<App:Hello/>);
       `,
             errors: [ { message: '\'Hello\' is defined but never used.' } ]
         }, {
@@ -132,7 +132,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         /* eslint jsx-member-vars: 1 */
         var Button;
         var Input;
-        Torq.render(<Button.Input unused=""/>);
+        TestRender(<Button.Input unused=""/>);
       `,
             errors: [ { message: '\'Input\' is defined but never used.' } ]
         }, {
