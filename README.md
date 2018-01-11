@@ -25,10 +25,18 @@ Add `twist` to the plugins section of your `.eslintrc` configuration file. You c
         "@twist/core"
     ]
 }
+
+Then add the recommended rules to your `extends` section:
+
+```JSON
+{
+    "extends": [
+        "plugin:@twist/core/recommended"
+    ]
+}
 ```
 
-
-Then configure the rules you want to use under the rules section.
+Alternative, you can configure the rules you want to use individually, under the rules section:
 
 ```json
 {
@@ -40,8 +48,11 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-* [twist/jsx-member-vars](docs/rules/jsx-member-vars.md): Prevent imported members and variables used in JSX from being marked as unused.
-* [twist/no-undef](docs/rules/no-undef.md): Extends eslint 'no-undef' rule for Twist structural components like `<repeat>` and `using`.
+* [@twist/core/jsx-member-vars](docs/rules/jsx-member-vars.md): Prevent imported members and variables used in JSX from being marked as unused.
+* [@twist/core/no-undef](docs/rules/no-undef.md): Extends the eslint 'no-undef' rule for Twist structural components like `<repeat>` and `using`, and to understand auto-imported decorators.
+* [@twist/core/constructor-super](docs/rules/constructor-super.md): Extends the eslint 'constructor-super' rule to understand Twist class decorators that auto-extend a class (e.g. `@Store` and `@Component`).
+
+Note: This eslint plugin reads your `.twistrc` configuration file to determine which decorators are auto-imported, based on which Twist libraries you use.
 
 ## Proposing a new Rule
 
@@ -64,7 +75,7 @@ can read our [ESLint How-To Guide](ESLINT_HOWTO.md).
 
 Here's an example of using the Twist ESLint plugin in conjunction with the `eslint:recommended` rules:
 
-```json
+```js
 {
     "parser": "babel-eslint",
     "plugins": [
@@ -86,13 +97,6 @@ Here's an example of using the Twist ESLint plugin in conjunction with the `esli
             "jsx": true
         },
         "sourceType": "module"
-    },
-    "rules": {
-        // You can override rules here if you want
-        // FYI, this is what @twist/core/recommended gives you:
-        "@twist/core/jsx-member-vars": "warn",
-        "@twist/core/no-undef": "error",
-        "no-undef": "off" // letting twist's no-undef take over
     }
 }
 ```

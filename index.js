@@ -15,28 +15,30 @@
  * @fileoverview Custom rules to support syntactic features of Twist
  * @author Adobe
  */
-"use strict";
+'use strict';
 
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const requireIndex = require("requireindex");
+const requireIndex = require('requireindex');
 
 //------------------------------------------------------------------------------
 // Plugin Definition
 //------------------------------------------------------------------------------
 
-"use strict";
+'use strict';
 
 module.exports = {
-    rules: requireIndex(__dirname + "/src/rules"),
+    rules: requireIndex(__dirname + '/src/rules'),
     configs: {
         recommended: {
             rules: {
-                "@twist/core/jsx-member-vars": "warn",
-                "@twist/core/no-undef": "error",
-                "no-undef": "off"
+                '@twist/core/jsx-member-vars': 'warn',
+                '@twist/core/no-undef': 'error',
+                '@twist/core/constructor-super': 'error',
+                'constructor-super': 'off',
+                'no-undef': 'off'
             }
         }
     }

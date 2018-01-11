@@ -46,7 +46,7 @@
  * so we can simply walk up the node tree for each "global" variable (as per ESLint), and see if
  * it was actually defined.
  */
-"use strict";
+'use strict';
 
 //----------------------------------------------------------------------
 // Helpers
@@ -57,14 +57,14 @@ const getTwistConfiguration = require('../twist-config');
 const hasTypeOfOperator = node => {
     var parent = node.parent;
 
-    return parent && parent.type === "UnaryExpression" && parent.operator === "typeof";
+    return parent && parent.type === 'UnaryExpression' && parent.operator === 'typeof';
 };
 
 const isJSXTag = (node, tag) => {
-    if (node.name && node.name.type === "JSXIdentifier" && (!tag || node.name.name === tag)) {
+    if (node.name && node.name.type === 'JSXIdentifier' && (!tag || node.name.name === tag)) {
         return true;
     }
-    if (node.name && node.name.type === "JSXNamespacedName" && (!tag || (node.name.namespace.name + ':' + node.name.name.name) === tag)) {
+    if (node.name && node.name.type === 'JSXNamespacedName' && (!tag || (node.name.namespace.name + ':' + node.name.name.name) === tag)) {
         return true;
     }
     return false;
@@ -115,18 +115,18 @@ module.exports = {
     meta: {
         docs: {
             description: "Extends eslint 'no-undef' rule for Twist structural components",
-            category: "JSX",
+            category: 'Twist',
             recommended: true
         },
         fixable: null, // or "code" or "whitespace"
         schema: [ {
-            "type": "object",
-            "properties": {
-                "typeof": {
-                    "type": "boolean"
+            'type': 'object',
+            'properties': {
+                'typeof': {
+                    'type': 'boolean'
                 }
             },
-            "additionalProperties": false
+            'additionalProperties': false
         } ]
     },
 
@@ -182,7 +182,7 @@ module.exports = {
                     }
                 }
             },
-            "Program:exit"() {
+            'Program:exit'() {
                 const globalScope = context.getScope();
                 const twistConfig = getTwistConfiguration();
                 const twistDecorators = twistConfig.decorators || {};
@@ -204,7 +204,7 @@ module.exports = {
                     while (node.parent) {
                         node = node.parent;
 
-                        if (node.type === "JSXElement") {
+                        if (node.type === 'JSXElement') {
                             // we convert the attributes to a map to be able to evaluate the assignments
                             const attrMap = node.openingElement.attributes.reduce((result, attr) => {
                                 let map = result;
@@ -214,7 +214,7 @@ module.exports = {
                                 return result;
                             }, {});
 
-                            if (isJSXTag(node.openingElement, "repeat")) {
+                            if (isJSXTag(node.openingElement, 'repeat')) {
                                 // adds support for <repeat for={ item in value }></repeat>
                                 // adds support for <repeat for={ (item, index) in value }></repeat>
                                 if (isNameInForAttribute(attrMap.for, identifierName)
@@ -225,7 +225,7 @@ module.exports = {
                                 }
                             }
                             // adds support for <using value={ value } as={ item }></using>
-                            else if (isJSXTag(node.openingElement, "using")) {
+                            else if (isJSXTag(node.openingElement, 'using')) {
                                 if (isNameInAsAttribute(attrMap.as, identifierName)) {
                                     return;
                                 }

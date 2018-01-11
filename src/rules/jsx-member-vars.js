@@ -14,7 +14,7 @@
 /**
  * @fileoverview Prevent Import members and variables used in JSX to be marked as 'no-unused'
  */
-"use strict";
+'use strict';
 
 //----------------------------------------------------------------------
 // Helpers
@@ -27,8 +27,8 @@
 module.exports = {
     meta: {
         docs: {
-            description: "Prevent Import members and variables used in JSX to be marked as unused",
-            category: "JSX",
+            description: 'Prevent Import members and variables used in JSX to be marked as unused',
+            category: 'Twist',
             recommended: true
         },
         fixable: null, // or "code" or "whitespace"
