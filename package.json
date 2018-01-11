@@ -1,6 +1,6 @@
 {
   "name": "@twist/eslint-plugin-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Adobe Systems Inc.",
   "description": "Custom eslint rules to support syntactic features of Twist",
   "repository": "https://github.com/adobe/eslint-plugin-twist",
