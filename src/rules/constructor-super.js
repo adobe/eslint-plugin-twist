@@ -23,9 +23,11 @@ function isAutoExtended(classNode) {
     // Look to see if we have a class decorator that extends from a super-class
     const twistDecorators = getTwistConfiguration().decorators || {};
     const isExtendedDecorator = decorator => {
-        const name = decorator.expression && decorator.expression.name;
-        if (name && twistDecorators[name]) {
-            return twistDecorators[name].inherits !== undefined;
+        const expr = decorator.expression;
+        const identifier = (expr.type === 'Identifier' && expr)
+            || (expr.type === 'CallExpression' && expr.callee.type === 'Identifier' && expr.callee);
+        if (identifier && twistDecorators[identifier.name]) {
+            return twistDecorators[identifier.name].inherits !== undefined;
         }
         return false;
     };
@@ -52,6 +54,7 @@ module.exports = {
             const isConstructorFunction = node.type === 'FunctionExpression'
                 && node.parent.type === 'MethodDefinition'
                 && node.parent.kind === 'constructor';
+
             if (isConstructorFunction) {
                 let classNode = node.parent.parent.parent;
                 if (!classNode.superClass && isAutoExtended(classNode)) {
