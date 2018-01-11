@@ -61,6 +61,25 @@ ruleTester.run('constructor-super', constructorSuper, {
             }
         }
         `
+    }, {
+        code: `
+        @Store({ mutable: true })
+        class MyStore {
+            constructor() {
+                super();
+                this.x = 2;
+            }
+        }
+        `
+    }, {
+        code: `
+        @Prototype({ x: 3 })
+        class MyClass {
+            constructor() {
+                this.x = 2;
+            }
+        }
+        `
     } ],
     invalid: [ {
         code: `
@@ -79,6 +98,35 @@ ruleTester.run('constructor-super', constructorSuper, {
     }, {
         code: `
         @Prototype
+        class MyClass {
+            constructor() {
+                super();
+                this.x = 2;
+            }
+        }
+        `,
+        errors: [ {
+            message: `Unexpected 'super()'.`,
+            line: 5
+        } ],
+        parser: 'babel-eslint'
+    }, {
+        code: `
+        @Store({ mutable: true })
+        class MyStore {
+            constructor() {
+                this.x = 2;
+            }
+        }
+        `,
+        errors: [ {
+            message: `Expected to call 'super()'.`,
+            line: 4
+        } ],
+        parser: 'babel-eslint'
+    }, {
+        code: `
+        @Prototype({ x: 3 })
         class MyClass {
             constructor() {
                 super();
