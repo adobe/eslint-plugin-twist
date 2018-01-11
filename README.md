@@ -1,6 +1,8 @@
-# eslint-plugin-twist
+# ESLint Plugin for Twist
 
-Custom rules to support Twist features, such as auto-imports and
+[![Build Status](https://travis-ci.org/adobe/eslint-plugin-twist.svg?branch=master)](https://travis-ci.org/adobe/eslint-plugin-twist)
+
+Custom rules to support [Twist](https://github.com/adobe/twist) features, such as auto-imports and JSX syntax.
 
 ## Installation
 

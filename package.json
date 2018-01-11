@@ -21,7 +21,7 @@
     "linter": "eslint --ext .js ."
   },
   "dependencies": {
-    "@twist/configuration": "adobe/twist-configuration",
+    "@twist/configuration": "0.1.0",
     "requireindex": "1.1.0"
   },
   "devDependencies": {
