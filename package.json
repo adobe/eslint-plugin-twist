@@ -18,7 +18,9 @@
   ],
   "scripts": {
     "test": "nyc mocha test --reporter spec --recursive --growl",
-    "linter": "eslint --ext .js ."
+    "linter": "eslint --ext .js .",
+    "preversion": "npm run linter && npm run test",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "@twist/configuration": "0.1.0",
@@ -33,5 +35,8 @@
   },
   "engines": {
     "node": ">=6.9.4"
+  },
+    "publishConfig": {
+    "access": "public"
   }
 }
