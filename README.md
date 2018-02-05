@@ -10,7 +10,7 @@ You'll first need to install [ESLint](http://eslint.org):
 
 ```
 npm install eslint --save-dev
-npm install @twist/eslint-plugin --save-dev
+npm install @twist/eslint-plugin-core --save-dev
 ```
 
 **Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `@twist/eslint-plugin` globally.
@@ -90,7 +90,7 @@ Here's an example of using the Twist ESLint plugin in conjunction with the `esli
     "extends": [
         "eslint:recommended",
         "plugin:@twist/core/recommended"
-    ]
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
