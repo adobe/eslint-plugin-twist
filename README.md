@@ -1,6 +1,6 @@
 # ESLint Plugin for Twist
 
-[![Build Status](https://travis-ci.org/adobe/eslint-plugin-twist.svg?branch=master)](https://travis-ci.org/adobe/eslint-plugin-twist)
+[![Build Status](https://travis-ci.org/adobe/eslint-plugin-twist.svg?branch=master)](https://travis-ci.org/adobe/eslint-plugin-twist) [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/eslint-plugin-twist.svg)](https://greenkeeper.io/)
 
 Custom rules to support [Twist](https://github.com/adobe/twist) features, such as auto-imports and JSX syntax.
 
